@@ -8,5 +8,6 @@ require'bufferline'.setup{
     }
 }
 
-vim.keymap.set("n", "<tab>", function() vim.cmd("bn") end)
-
+vim.keymap.set("n", "<tab>", vim.cmd.bn)
+vim.keymap.set("n", "<leader>cb", vim.cmd.bd)
+vim.keymap.set("n", "<S-Tab>", vim.cmd.bp)
