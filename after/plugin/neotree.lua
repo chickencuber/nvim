@@ -24,3 +24,14 @@ end
 
 vim.cmd('Neotree position=current')
 
+vim.api.nvim_create_autocmd("BufCreate", {
+  nested = true,
+  callback = function(args)
+    -- Check if the created buffer is empty
+    if vim.api.nvim_buf_get_name(args.buf) == "" then
+        vim.cmd('Neotree position=current')
+        vim.api.nvim_buf_delete(args.buf, { force = true })
+    end
+  end
+})
+
