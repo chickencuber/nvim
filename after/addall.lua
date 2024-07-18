@@ -1,0 +1,8 @@
+require("after.plugin.lsp")
+require("after.plugin.bufferline")
+require("after.plugin.fugitive")
+require("after.plugin.harpoon")
+require("after.plugin.telescope")
+require("after.plugin.treesitter")
+require("after.plugin.undotree")
+require("after.plugin.nvimtree")
