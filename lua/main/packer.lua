@@ -51,4 +51,10 @@ return require('packer').startup(function(use)
             'nvim-tree/nvim-web-devicons', -- optional
         },
     }
+    use {
+        'adelarsq/image_preview.nvim',
+        config = function()
+            require("image_preview").setup({})
+        end
+    }
 end)
