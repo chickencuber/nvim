@@ -120,12 +120,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\N1Bat\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\harpoon",
     url = "https://github.com/theprimeagen/harpoon"
   },
-  ["image_preview.nvim"] = {
-    config = { "\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18image_preview\frequire\0" },
-    loaded = true,
-    path = "C:\\Users\\N1Bat\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\image_preview.nvim",
-    url = "https://github.com/adelarsq/image_preview.nvim"
-  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "C:\\Users\\N1Bat\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lsp-zero.nvim",
@@ -211,10 +205,6 @@ time([[Defining packer_plugins]], false)
 time([[Config for catppuccin]], true)
 try_loadstring("\27LJ\2\nD\0\0\3\0\4\0\0066\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\1K\0\1\0\21catppuccin-mocha\16colorscheme\bcmd\bvim\0", "config", "catppuccin")
 time([[Config for catppuccin]], false)
--- Config for: image_preview.nvim
-time([[Config for image_preview.nvim]], true)
-try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18image_preview\frequire\0", "config", "image_preview.nvim")
-time([[Config for image_preview.nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
