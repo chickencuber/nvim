@@ -183,6 +183,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\N1Bat\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["ron.vim"] = {
+    loaded = true,
+    path = "C:\\Users\\N1Bat\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\ron.vim",
+    url = "https://github.com/ron-rs/ron.vim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "C:\\Users\\N1Bat\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
