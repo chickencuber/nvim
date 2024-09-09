@@ -31,11 +31,20 @@ require('mason').setup({ui = {
 }
 })
 require('mason-lspconfig').setup({
-    ensure_installed = {'tsserver', 'rust_analyzer', 'eslint', 'lua_ls'},
+    ensure_installed = {'rust_analyzer', 'eslint', 'lua_ls', 'omnisharp'},
     handlers = {
         function(server_name)
             require('lspconfig')[server_name].setup({
                 capabilities = lsp_capabilities,
+            })
+        end,
+        omnisharp = function ()
+            require('lspconfig').omnisharp.setup({
+                capabilities = lsp_capabilities,
+                root_dir = function()
+                    -- Use the current working directory as the root directory
+                    return vim.fn.getcwd()
+                end,
             })
         end,
         lua_ls = function()
