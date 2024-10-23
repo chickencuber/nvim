@@ -46,16 +46,6 @@ require('mason-lspconfig').setup({
                 end,
             })
         end;
-        denols = function()
-            require('lspconfig').denols.setup({
-                capabilities = lsp_capabilities,
-                root_dir = function()
-                    -- Use the current working directory as the root directory
-                    return vim.fn.getcwd()
-                end,
-            })
-
-        end,
         omnisharp = function ()
             require('lspconfig').omnisharp.setup({
                 capabilities = lsp_capabilities,
