@@ -30,12 +30,25 @@ require('mason').setup({ui = {
 })
 
 require('mason-lspconfig').setup({
-    ensure_installed = {'rust_analyzer', 'eslint', 'lua_ls', 'omnisharp'},
+    ensure_installed = {'rust_analyzer', 'eslint', 'lua_ls', 'omnisharp', 'denols', 'ts_ls'},
     handlers = {
         function(server_name)
             require('lspconfig')[server_name].setup({
                 capabilities = lsp_capabilities,
             })
+        end,
+        ts_ls = function()
+            require('lspconfig').ts_ls.setup({
+                capabilities = lsp_capabilities,
+                root_dir = require('lspconfig.util').root_pattern('package.json', 'tsconfig.json', 'jsconfig.json'),
+            })
+        end;
+        denols = function()
+            require('lspconfig').denols.setup({
+                capabilities = lsp_capabilities,
+                root_dir = require('lspconfig.util').root_pattern('deno.json', 'deno.jsonc'),
+            })
+
         end,
         omnisharp = function ()
             require('lspconfig').omnisharp.setup({
