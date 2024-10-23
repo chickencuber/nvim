@@ -30,7 +30,7 @@ require('mason').setup({ui = {
 })
 
 require('mason-lspconfig').setup({
-    ensure_installed = {'rust_analyzer', 'eslint', 'lua_ls', 'omnisharp', 'denols', 'ts_ls'},
+    ensure_installed = {'rust_analyzer', 'eslint', 'lua_ls', 'omnisharp', 'ts_ls'},
     handlers = {
         function(server_name)
             require('lspconfig')[server_name].setup({
