@@ -40,13 +40,19 @@ require('mason-lspconfig').setup({
         ts_ls = function()
             require('lspconfig').ts_ls.setup({
                 capabilities = lsp_capabilities,
-                root_dir = require('lspconfig.util').root_pattern('package.json', 'tsconfig.json', 'jsconfig.json'),
+                root_dir = function()
+                    -- Use the current working directory as the root directory
+                    return vim.fn.getcwd()
+                end,
             })
         end;
         denols = function()
             require('lspconfig').denols.setup({
                 capabilities = lsp_capabilities,
-                root_dir = require('lspconfig.util').root_pattern('deno.json', 'deno.jsonc'),
+                root_dir = function()
+                    -- Use the current working directory as the root directory
+                    return vim.fn.getcwd()
+                end,
             })
 
         end,
