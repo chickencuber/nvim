@@ -94,19 +94,6 @@ use {'VonHeikemen/lsp-zero.nvim',
         use {
             'nvim-lualine/lualine.nvim',
             requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-            config= function ()
-                require('lualine').setup{
-                    options = { section_separators = '', component_separators = '' },
-                    sections = {
-                        lualine_a = {'mode'},
-                        lualine_b = {'branch', 'diff', 'diagnostics'},
-                        lualine_c = {},
-                        lualine_x = {},
-                        lualine_y = {},
-                        lualine_z = {'progress'}
-                    },
-                }
-            end
         }
         use {
             "lukas-reineke/indent-blankline.nvim",
