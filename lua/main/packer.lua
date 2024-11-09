@@ -16,7 +16,15 @@ return require('packer').startup(function(use)
     end
 }
 require("catppuccin").setup({
-    mason = true
+    mason = true,
+    nvimtree = true,
+    telescope = true,
+    treesitter = true,
+    lsp_trouble = true,
+    lsp_saga = true,
+    cmp = true,
+    gitsigns = true,
+    bufferline = true,
 })
 use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 use('theprimeagen/harpoon')
@@ -83,4 +91,29 @@ use {'VonHeikemen/lsp-zero.nvim',
                 buftypes = {},
             }
         end}
+        use {
+            'nvim-lualine/lualine.nvim',
+            requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+            config= function ()
+                require('lualine').setup{
+                    options = { section_separators = '', component_separators = '' },
+                    sections = {
+                        lualine_a = {'mode'},
+                        lualine_b = {'branch', 'diff', 'diagnostics'},
+                        lualine_c = {},
+                        lualine_x = {},
+                        lualine_y = {},
+                        lualine_z = {'progress'}
+                    },
+                }
+            end
+        }
+        use {
+            "lukas-reineke/indent-blankline.nvim",
+            config = function()
+                require("ibl").setup{
+                    scope = { enabled = false },
+                }
+            end
+        }
     end)
