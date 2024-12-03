@@ -49,5 +49,3 @@ vim.keymap.set("n", '<leader>PS', vim.cmd.PackerSync)
 vim.keymap.set("n", '<leader>tm', vim.cmd.term)
 vim.keymap.set("t", "<S-Tab>", "<C-\\><C-n>")
 
-vim.keymap.set("n", "<leader>a", "ggVG");
-

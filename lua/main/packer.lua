@@ -103,4 +103,10 @@ use {'VonHeikemen/lsp-zero.nvim',
                 }
             end
         }
+        use {
+            "Djancyp/better-comments.nvim",
+            config = function()
+                require('better-comment').Setup()
+            end
+        }
     end)
