@@ -10,9 +10,6 @@ require'bufferline'.setup{
     }
 }
 
-vim.cmd(':lua vim.wo.winbar=_G.nvim_bufferline()')
-vim.cmd(':set showtabline=0')
-
 vim.keymap.set("n", "<tab>", vim.cmd.bn)
 vim.keymap.set("n", "<leader>cb", vim.cmd.bd)
 vim.keymap.set("n", "<S-Tab>", vim.cmd.bp)
