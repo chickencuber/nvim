@@ -29,10 +29,24 @@ require('mason').setup({ui = {
 }
 })
 
-require('lspconfig').c3_lsp.setup {
-    cmd = { 'c3-lsp' },
-    capabilities = lsp_capabilities,
-}
+local lspconfig = require('lspconfig')
+local util = require('lspconfig/util')
+local configs = require('lspconfig.configs')
+if not configs.c3_lsp then
+    configs.c3_lsp = {
+        default_config = {
+            cmd = { "/home/chickencuber/c3/c3lsp" },
+            filetypes = { "c3", "c3i" },
+            root_dir = function(fname)
+                return util.find_git_ancestor(fname)
+            end,
+            settings = {},
+            name = "c3_lsp"
+        }
+    }
+end
+lspconfig.c3_lsp.setup{}
+
 require('mason-lspconfig').setup({
     ensure_installed = {'rust_analyzer', 'eslint', 'lua_ls', 'omnisharp', 'ts_ls', 'clangd'},
     handlers = {
