@@ -27,6 +27,8 @@ require("catppuccin").setup({
     bufferline = true,
 })
 use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+use('nvim-treesitter/nvim-treesitter-context')
+use('nvim-treesitter/nvim-treesitter-refactor')
 use('theprimeagen/harpoon')
 use('mbbill/undotree')
 use('tpope/vim-fugitive')

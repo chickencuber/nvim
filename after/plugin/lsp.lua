@@ -29,6 +29,10 @@ require('mason').setup({ui = {
 }
 })
 
+require('lspconfig').c3_lsp.setup {
+    cmd = { 'c3-lsp' },
+    capabilities = lsp_capabilities,
+}
 require('mason-lspconfig').setup({
     ensure_installed = {'rust_analyzer', 'eslint', 'lua_ls', 'omnisharp', 'ts_ls', 'clangd'},
     handlers = {
