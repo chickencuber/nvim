@@ -1,3 +1,20 @@
+vim.filetype.add({
+  extension = {
+    c3 = "c3",
+    c3i = "c3",
+    c3t = "c3",
+  },
+})
+
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.c3 = {
+  install_info = {
+    url = "https://github.com/c3lang/tree-sitter-c3",
+    files = {"src/parser.c", "src/scanner.c"},
+    branch = "main",
+  },
+}
+
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the listed parsers MUST always be installed)
   ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "rust", "javascript", "typescript" },
@@ -8,6 +25,18 @@ require'nvim-treesitter.configs'.setup {
   -- Automatically install missing parsers when entering buffer
   -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
   auto_install = true,
+  parser_install_info = {
+      c3 = {
+          install_info = {
+              url = "https://github.com/c3lang/tree-sitter-c3",
+              files = { "src/parser.c", "src/scanner.c" },
+              branch = "main",
+          },
+          sync_install = false, -- Set to true if you want to install synchronously
+          auto_install = true,  -- Automatically install when opening a file
+          filetype = "c3",      -- if filetype does not match the parser name
+      },
+  },
 
   -- List of parsers to ignore installing (or "all")
 
@@ -28,3 +57,4 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
