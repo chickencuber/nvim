@@ -109,4 +109,12 @@ use {'VonHeikemen/lsp-zero.nvim',
                 require('better-comment').Setup()
             end
         }
+        return {
+            {
+                "wstucco/c3.nvim",
+                config = function()
+                    require("c3")
+                end,
+            },
+        }
     end)
