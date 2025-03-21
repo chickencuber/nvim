@@ -27,4 +27,12 @@ vim.api.nvim_create_user_command('Lib', function(args)
     print(vim.fn.system("prmn lib " .. args.args))
 end, {nargs = "?"})
 
+vim.api.nvim_create_augroup("JSPlusPlusFileTypeDetect", { clear = true })
+
+-- Associate .jspp extension with the jspp filetype
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    group = "JSPlusPlusFileTypeDetect",
+    pattern = "*.jspp",
+    command = "setfiletype jspp"
+})
 
