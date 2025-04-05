@@ -48,11 +48,19 @@ end
 lspconfig.c3_lsp.setup{}
 
 require('mason-lspconfig').setup({
-    ensure_installed = {'rust_analyzer', 'eslint', 'lua_ls', 'omnisharp', 'ts_ls', 'clangd'},
+    ensure_installed = {'rust_analyzer', 'eslint', 'lua_ls', 'omnisharp', 'ts_ls', 'clangd', 'kotlin_language_server'},
     handlers = {
         function(server_name)
             require('lspconfig')[server_name].setup({
                 capabilities = lsp_capabilities,
+            })
+        end,
+        kotlin_language_server = function()
+            require("lspconfig").kotlin_language_server.setup({
+            --    capabilities = lsp_capabilities,
+            --    root_dir = function()
+            --        return vim.fn.getcwd()
+            --    end
             })
         end,
         ts_ls = function()
