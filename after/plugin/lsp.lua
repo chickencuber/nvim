@@ -9,8 +9,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
         vim.keymap.set('n', '<leader>vws', function() vim.lsp.buf.workspace_symbol() end, opts)
         vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end, opts)
-        vim.keymap.set('n', '[d', function() vim.diagnostic.goto_next() end, opts)
-        vim.keymap.set('n', ']d', function() vim.diagnostic.goto_prev() end, opts)
+        vim.keymap.set('n', '[d', function() vim.lsp.diagnostic.goto_next() end, opts)
+        vim.keymap.set('n', ']d', function() vim.lsp.diagnostic.goto_prev() end, opts)
         vim.keymap.set('n', '<leader>vca', function() vim.lsp.buf.code_action() end, opts)
         vim.keymap.set('n', '<leader>vrr', function() vim.lsp.buf.references() end, opts)
         vim.keymap.set('n', '<leader>vrn', function() vim.lsp.buf.rename() end, opts)
@@ -47,6 +47,23 @@ if not configs.c3_lsp then
 end
 lspconfig.c3_lsp.setup{}
 
+if not configs.serve_d then
+    configs.c3_lsp = {
+        default_config = {
+            cmd = { "c3lsp" },
+            filetypes = { "d" },
+            root_dir = function(fname)
+                return util.find_git_ancestor(fname)
+            end,
+            settings = {},
+            name = "serve_d"
+        }
+    }
+end
+lspconfig.serve_d.setup{}
+
+
+
 require('mason-lspconfig').setup({
     ensure_installed = {'rust_analyzer', 'eslint', 'lua_ls', 'omnisharp', 'ts_ls', 'clangd', 'kotlin_language_server'},
     handlers = {
@@ -57,10 +74,10 @@ require('mason-lspconfig').setup({
         end,
         kotlin_language_server = function()
             require("lspconfig").kotlin_language_server.setup({
-            --    capabilities = lsp_capabilities,
-            --    root_dir = function()
-            --        return vim.fn.getcwd()
-            --    end
+                capabilities = lsp_capabilities,
+                init_options = {
+                    storagePath = "/home/chickencuber/.cache/nvim/kotlin"
+                },
             })
         end,
         ts_ls = function()
