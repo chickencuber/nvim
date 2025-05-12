@@ -31,7 +31,9 @@ use('nvim-treesitter/nvim-treesitter-context')
 use('nvim-treesitter/nvim-treesitter-refactor')
 use('theprimeagen/harpoon')
 use('mbbill/undotree')
-use('tpope/vim-fugitive')
+-- use('tpope/vim-fugitive')
+use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+
 use {'VonHeikemen/lsp-zero.nvim',
 {'neovim/nvim-lspconfig'},
 {'williamboman/mason.nvim'},
@@ -47,7 +49,7 @@ use {'VonHeikemen/lsp-zero.nvim',
 {'L3MON4D3/LuaSnip'},
 {'rafamadriz/friendly-snippets'},
     }
-    use {'akinsho/nvim-bufferline.lua'}
+    -- use {'akinsho/nvim-bufferline.lua'}
     use {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
