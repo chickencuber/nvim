@@ -53,7 +53,7 @@ use {'VonHeikemen/lsp-zero.nvim',
 {'L3MON4D3/LuaSnip'},
 {'rafamadriz/friendly-snippets'},
     }
-    -- use {'akinsho/nvim-bufferline.lua'}
+    use {'akinsho/nvim-bufferline.lua'}
     use {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
