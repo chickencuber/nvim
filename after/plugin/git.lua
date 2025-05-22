@@ -1,1 +1,6 @@
-vim.keymap.set("n", "<leader>gs", vim.cmd.Neogit)
+local neogit = require('neogit')
+vim.keymap.set("n", "<leader>gs", function ()
+    neogit.open({kind="split_above"})
+end)
+
+
