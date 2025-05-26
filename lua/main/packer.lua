@@ -123,4 +123,5 @@ use {'VonHeikemen/lsp-zero.nvim',
                 require("c3")
             end,
         }
+        use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
     end)
