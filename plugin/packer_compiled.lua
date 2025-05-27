@@ -137,6 +137,11 @@ _G.packer_plugins = {
     path = "/home/chickencuber/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/theprimeagen/harpoon"
   },
+  ["image.nvim"] = {
+    loaded = true,
+    path = "/home/chickencuber/.local/share/nvim/site/pack/packer/start/image.nvim",
+    url = "https://github.com/3rd/image.nvim"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/home/chickencuber/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
@@ -191,7 +196,7 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-colorizer.lua"] = {
-    config = { "\27LJ\2\nð\2\0\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0005\5\b\0=\5\t\4=\4\n\3=\3\v\0024\3\0\0=\3\f\2B\0\2\1K\0\1\0\rbuftypes\25user_default_options\tsass\fparsers\1\2\0\0\bcss\1\0\2\fparsers\0\venable\1\1\0\14\rtailwind\1\16virtualtext\bâ– \tmode\16virtualtext\bcss\1\tsass\0\nnames\2\rAARRGGBB\1\rRRGGBBAA\1\vhsl_fn\1\vcss_fn\1\bRGB\2\vRRGGBB\2\vrgb_fn\1\18always_update\1\14filetypes\1\0\3\14filetypes\0\25user_default_options\0\rbuftypes\0\1\2\0\0\6*\nsetup\14colorizer\frequire\0" },
+    config = { "\27LJ\2\nð\2\0\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0005\5\b\0=\5\t\4=\4\n\3=\3\v\0024\3\0\0=\3\f\2B\0\2\1K\0\1\0\rbuftypes\25user_default_options\tsass\fparsers\1\2\0\0\bcss\1\0\2\fparsers\0\venable\1\1\0\14\rRRGGBBAA\1\vrgb_fn\1\rtailwind\1\18always_update\1\rAARRGGBB\1\vRRGGBB\2\nnames\2\tsass\0\bcss\1\tmode\16virtualtext\bRGB\2\16virtualtext\bâ– \vcss_fn\1\vhsl_fn\1\14filetypes\1\0\3\25user_default_options\0\rbuftypes\0\14filetypes\0\1\2\0\0\6*\nsetup\14colorizer\frequire\0" },
     loaded = true,
     path = "/home/chickencuber/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
     url = "https://github.com/NvChad/nvim-colorizer.lua"
@@ -256,6 +261,14 @@ _G.packer_plugins = {
     path = "/home/chickencuber/.local/share/nvim/site/pack/packer/start/rainbow-delimiters.nvim",
     url = "https://github.com/HiPhish/rainbow-delimiters.nvim"
   },
+  ["render-markdown.nvim"] = {
+    config = { "\27LJ\2\nA\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\20render-markdown\frequire\0" },
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "/home/chickencuber/.local/share/nvim/site/pack/packer/opt/render-markdown.nvim",
+    url = "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+  },
   ["ron.vim"] = {
     loaded = true,
     path = "/home/chickencuber/.local/share/nvim/site/pack/packer/start/ron.vim",
@@ -274,22 +287,31 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: catppuccin
-time([[Config for catppuccin]], true)
-try_loadstring("\27LJ\2\nD\0\0\3\0\4\0\0066\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\1K\0\1\0\21catppuccin-mocha\16colorscheme\bcmd\bvim\0", "config", "catppuccin")
-time([[Config for catppuccin]], false)
--- Config for: nvim-colorizer.lua
-time([[Config for nvim-colorizer.lua]], true)
-try_loadstring("\27LJ\2\nð\2\0\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0005\5\b\0=\5\t\4=\4\n\3=\3\v\0024\3\0\0=\3\f\2B\0\2\1K\0\1\0\rbuftypes\25user_default_options\tsass\fparsers\1\2\0\0\bcss\1\0\2\fparsers\0\venable\1\1\0\14\rtailwind\1\16virtualtext\bâ– \tmode\16virtualtext\bcss\1\tsass\0\nnames\2\rAARRGGBB\1\rRRGGBBAA\1\vhsl_fn\1\vcss_fn\1\bRGB\2\vRRGGBB\2\vrgb_fn\1\18always_update\1\14filetypes\1\0\3\14filetypes\0\25user_default_options\0\rbuftypes\0\1\2\0\0\6*\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
-time([[Config for nvim-colorizer.lua]], false)
 -- Config for: c3.nvim
 time([[Config for c3.nvim]], true)
 try_loadstring("\27LJ\2\n\"\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\ac3\frequire\0", "config", "c3.nvim")
 time([[Config for c3.nvim]], false)
+-- Config for: catppuccin
+time([[Config for catppuccin]], true)
+try_loadstring("\27LJ\2\nD\0\0\3\0\4\0\0066\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\1K\0\1\0\21catppuccin-mocha\16colorscheme\bcmd\bvim\0", "config", "catppuccin")
+time([[Config for catppuccin]], false)
 -- Config for: better-comments.nvim
 time([[Config for better-comments.nvim]], true)
 try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nSetup\19better-comment\frequire\0", "config", "better-comments.nvim")
 time([[Config for better-comments.nvim]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+try_loadstring("\27LJ\2\nð\2\0\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0005\5\b\0=\5\t\4=\4\n\3=\3\v\0024\3\0\0=\3\f\2B\0\2\1K\0\1\0\rbuftypes\25user_default_options\tsass\fparsers\1\2\0\0\bcss\1\0\2\fparsers\0\venable\1\1\0\14\rRRGGBBAA\1\vrgb_fn\1\rtailwind\1\18always_update\1\rAARRGGBB\1\vRRGGBB\2\nnames\2\tsass\0\bcss\1\tmode\16virtualtext\bRGB\2\16virtualtext\bâ– \vcss_fn\1\vhsl_fn\1\14filetypes\1\0\3\25user_default_options\0\rbuftypes\0\14filetypes\0\1\2\0\0\6*\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
+time([[Config for nvim-colorizer.lua]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-treesitter ]]
+vim.cmd [[ packadd render-markdown.nvim ]]
+
+-- Config for: render-markdown.nvim
+try_loadstring("\27LJ\2\nA\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\20render-markdown\frequire\0", "config", "render-markdown.nvim")
+
+time([[Sequenced loading]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads

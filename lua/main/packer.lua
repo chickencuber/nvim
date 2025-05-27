@@ -120,4 +120,12 @@ return require('packer').startup(function(use)
     }
     use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
     use "windwp/nvim-ts-autotag"
+    use({
+        'MeanderingProgrammer/render-markdown.nvim',
+        after = { 'nvim-treesitter' },
+        config = function()
+            require('render-markdown').setup({})
+        end,
+    })
+    use {"3rd/image.nvim"}
 end)
