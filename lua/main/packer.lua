@@ -9,51 +9,51 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.8',
         -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
-    use { "catppuccin/nvim", as = "catppuccin",config= function()
+    use { "catppuccin/nvim", as = "catppuccin", config = function()
         vim.cmd.colorscheme "catppuccin-mocha"
     end
-}
-require("catppuccin").setup({
-    mason = true,
-    nvimtree = true,
-    telescope = true,
-    treesitter = true,
-    lsp_trouble = true,
-    lsp_saga = true,
-    cmp = true,
-    gitsigns = true,
-    bufferline = true,
-})
-use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-use('nvim-treesitter/nvim-treesitter-context')
-use('nvim-treesitter/nvim-treesitter-refactor')
-use({
-    'theprimeagen/harpoon',
-    branch = "harpoon2",
-    requires = { {"nvim-lua/plenary.nvim"} }
-})
-use('mbbill/undotree')
--- use('tpope/vim-fugitive')
-use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
-
-use {'VonHeikemen/lsp-zero.nvim',
-{'neovim/nvim-lspconfig'},
-{'williamboman/mason.nvim'},
-{'williamboman/mason-lspconfig.nvim'},
-
-{'hrsh7th/nvim-cmp'},
-{'hrsh7th/cmp-buffer'},
-{'hrsh7th/cmp-path'},
-{'saadparwaiz1/cmp_luasnip'},
-{'hrsh7th/cmp-nvim-lsp'},
-{'hrsh7th/cmp-nvim-lua'},
-
-{'L3MON4D3/LuaSnip'},
-{'rafamadriz/friendly-snippets'},
     }
-    use {'akinsho/nvim-bufferline.lua'}
+    require("catppuccin").setup({
+        mason = true,
+        nvimtree = true,
+        telescope = true,
+        treesitter = true,
+        lsp_trouble = true,
+        lsp_saga = true,
+        cmp = true,
+        gitsigns = true,
+        bufferline = true,
+    })
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    use('nvim-treesitter/nvim-treesitter-context')
+    use('nvim-treesitter/nvim-treesitter-refactor')
+    use({
+        'theprimeagen/harpoon',
+        branch = "harpoon2",
+        requires = { { "nvim-lua/plenary.nvim" } }
+    })
+    use('mbbill/undotree')
+    -- use('tpope/vim-fugitive')
+    use { 'TimUntersberger/neogit', requires = { 'nvim-lua/plenary.nvim', "sindrets/diffview.nvim" } }
+
+    use { 'VonHeikemen/lsp-zero.nvim',
+        { 'neovim/nvim-lspconfig' },
+        { 'williamboman/mason.nvim' },
+        { 'williamboman/mason-lspconfig.nvim' },
+
+        { 'hrsh7th/nvim-cmp' },
+        { 'hrsh7th/cmp-buffer' },
+        { 'hrsh7th/cmp-path' },
+        { 'saadparwaiz1/cmp_luasnip' },
+        { 'hrsh7th/cmp-nvim-lsp' },
+        { 'hrsh7th/cmp-nvim-lua' },
+
+        { 'L3MON4D3/LuaSnip' },
+        { 'rafamadriz/friendly-snippets' },
+    }
+    use { 'akinsho/nvim-bufferline.lua' }
     use {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
@@ -70,24 +70,24 @@ use {'VonHeikemen/lsp-zero.nvim',
     use 'ron-rs/ron.vim'
     use {
         'NvChad/nvim-colorizer.lua',
-        config= function()
+        config = function()
             require("colorizer").setup {
                 filetypes = { "*" },
                 user_default_options = {
-                    RGB = true, -- #RGB hex codes
-                    RRGGBB = true, -- #RRGGBB hex codes
-                    names = true, -- "Name" codes like Blue or blue
-                    RRGGBBAA = false, -- #RRGGBBAA hex codes
-                    AARRGGBB = false, -- 0xAARRGGBB hex codes
-                    rgb_fn = false, -- CSS rgb() and rgba() functions
-                    hsl_fn = false, -- CSS hsl() and hsla() functions
-                    css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-                    css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+                    RGB = true,           -- #RGB hex codes
+                    RRGGBB = true,        -- #RRGGBB hex codes
+                    names = true,         -- "Name" codes like Blue or blue
+                    RRGGBBAA = false,     -- #RRGGBBAA hex codes
+                    AARRGGBB = false,     -- 0xAARRGGBB hex codes
+                    rgb_fn = false,       -- CSS rgb() and rgba() functions
+                    hsl_fn = false,       -- CSS hsl() and hsla() functions
+                    css = false,          -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+                    css_fn = false,       -- Enable all CSS *functions*: rgb_fn, hsl_fn
                     -- Available modes for `mode`: foreground, background,  virtualtext
                     mode = "virtualtext", -- Set the display mode.
                     -- Available methods are false / true / "normal" / "lsp" / "both"
                     -- True is same as normal
-                    tailwind = false, -- Enable tailwind colors
+                    tailwind = false,                                -- Enable tailwind colors
                     -- parsers can contain values used in |user_default_options|
                     sass = { enable = false, parsers = { "css" }, }, -- Enable sass colors
                     virtualtext = "■",
@@ -98,30 +98,26 @@ use {'VonHeikemen/lsp-zero.nvim',
                 -- all the sub-options of filetypes apply to buftypes
                 buftypes = {},
             }
-        end}
-        use {
-            'nvim-lualine/lualine.nvim',
-            requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-        }
-        use {
-            "lukas-reineke/indent-blankline.nvim",
-            config = function()
-                require("ibl").setup{
-                    scope = { enabled = false },
-                }
-            end
-        }
-        use {
-            "Djancyp/better-comments.nvim",
-            config = function()
-                require('better-comment').Setup()
-            end
-        }
-        use {
-            "wstucco/c3.nvim",
-            config = function()
-                require("c3")
-            end,
-        }
-        use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
-    end)
+        end }
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+    }
+    use "lukas-reineke/indent-blankline.nvim"
+    use "echasnovski/mini.indentscope"
+    use {
+        "Djancyp/better-comments.nvim",
+        config = function()
+            require('better-comment').Setup()
+        end
+    }
+    use "HiPhish/rainbow-delimiters.nvim"
+    use {
+        "wstucco/c3.nvim",
+        config = function()
+            require("c3")
+        end,
+    }
+    use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
+    use "windwp/nvim-ts-autotag"
+end)
