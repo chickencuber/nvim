@@ -127,5 +127,14 @@ return require('packer').startup(function(use)
             require('render-markdown').setup({})
         end,
     })
-    use {"3rd/image.nvim"}
+    use { "3rd/image.nvim" }
+    use {
+        'nvim-orgmode/orgmode',
+        config = function()
+            require('orgmode').setup({
+                org_agenda_files = '~/orgfiles/**/*',
+                org_default_notes_file = '~/orgfiles/refile.org',
+            })
+        end
+    }
 end)
