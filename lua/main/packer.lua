@@ -137,4 +137,5 @@ return require('packer').startup(function(use)
             })
         end
     }
+    use "opdavies/toggle-checkbox.nvim"
 end)
