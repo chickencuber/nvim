@@ -13,6 +13,7 @@ vim.keymap.set("n", "<C-q>", "<C-v>", { noremap = true })
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
+vim.keymap.set("n", "<leader>p", [["_dP]])
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>f", "mzggVG=z`z")
 
