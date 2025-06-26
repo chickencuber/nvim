@@ -22,7 +22,9 @@ return require('packer').startup(function(use)
         treesitter = true,
         lsp_trouble = true,
         lsp_saga = true,
+        harpoon = true,
         cmp = true,
+        neogit = true,
         gitsigns = true,
         bufferline = true,
     })
