@@ -141,6 +141,7 @@ return require('packer').startup(function(use)
                     org = {
                         org_cycle=false,
                         org_global_cycle=false,
+                        org_toggle_checkbox="<leader>tt"
                     },
                 },
             })

@@ -32,7 +32,7 @@ vim.keymap.set("t", "<S-Tab>", "<C-\\><C-n>")
 
 vim.keymap.set("n", "<leader>tt", function()
     local ft = vim.bo.filetype
-    if ft == "org" or ft == "markdown" or ft == "norg" then
+    if ft == "markdown" or ft == "norg" then
         require('toggle-checkbox').toggle()
     end
 end)
