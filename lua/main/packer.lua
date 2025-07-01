@@ -236,4 +236,10 @@ return require('packer').startup(function(use)
             hl(0, "MultiCursorDisabledSign", { link = "SignColumn"})
         end
     }
+    use {
+        "Toprun123/PicVim",
+        config = function()
+            require'picvim'.setup()
+        end,
+    }
 end)
