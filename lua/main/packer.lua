@@ -237,7 +237,7 @@ return require('packer').startup(function(use)
         end
     }
     use {
-        "Toprun123/PicVim",
+        "chickencuber/PicVim",
         config = function()
             require'picvim'.setup()
         end,
