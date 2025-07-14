@@ -264,6 +264,9 @@ syntax keyword jsCatch catch skipwhite skipempty nextgroup=jsExceptionBlock,jsEx
 syntax region  jsExceptionParams matchgroup=jsExceptionParens start=+(+ end=+)+ contained contains=@jsExpression skipwhite skipempty nextgroup=jsExceptionBlock
 syntax keyword jsFinally finally contained skipwhite skipempty nextgroup=jsExceptionBlock
 syntax keyword jsThrow throw skipwhite skipempty nextgroup=@jsExpression
+syntax keyword jsImport import as
+syntax keyword jsExport export
+syntax keyword jsppMod mod
 
 " with statement
 syntax keyword jsWith with skipwhite skipempty nextgroup=jsWithExpression
@@ -281,6 +284,9 @@ highlight default link jsppMacroUse Type
 highlight default link jsppMacro Keyword
 
 " Basics
+highlight default link jsImport Keyword
+highlight default link jsExport Keyword
+highlight default link jsppMod Keyword
 highlight default link jsDebugger Error
 highlight default link jsSemicolon Operator
 highlight default link jsComma Operator
