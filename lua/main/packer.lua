@@ -242,4 +242,5 @@ return require('packer').startup(function(use)
             require'picvim'.setup()
         end,
     }
+    use 'elkowar/yuck.vim'
 end)
