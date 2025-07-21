@@ -33,7 +33,6 @@ end, {nargs = "?"})
 vim.filetype.add({
     extension = {
         jspp="jspp",
-        yuck = "yuck",
     },
 })
 
