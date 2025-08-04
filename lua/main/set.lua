@@ -37,19 +37,3 @@ vim.filetype.add({
     },
 })
 
-
-local transparent = true
-
-function ToggleTransparency()
-    if transparent then
-        vim.cmd.colorscheme "catppuccin-mocha"
-    else
-        vim.cmd [[ hi Normal guibg=NONE ]]
-        vim.cmd [[ hi NormalNC guibg=NONE ]]
-        vim.cmd [[ hi EndOfBuffer guibg=NONE ]]
-    end
-    transparent = not transparent
-end
-
-vim.api.nvim_set_keymap('n', '<leader>ut', ':lua ToggleTransparency()<CR>', { noremap = true, silent = true })
-
