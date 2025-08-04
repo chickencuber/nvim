@@ -36,4 +36,31 @@ vim.filetype.add({
         jspp="jspp",
     },
 })
+local augroup = vim.api.nvim_create_augroup("numbertoggle", {})
+
+vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "CmdlineLeave", "WinEnter" }, {
+    pattern = "*",
+    group = augroup,
+    callback = function()
+        if vim.o.nu and vim.api.nvim_get_mode().mode ~= "i" then
+            vim.opt.relativenumber = true
+            vim.opt.cursorline = true;
+        end
+    end,
+})
+
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "CmdlineEnter", "WinLeave" }, {
+    pattern = "*",
+    group = augroup,
+    callback = function()
+        if vim.o.nu then
+            vim.opt.relativenumber = false
+            vim.opt.cursorline = false;
+            if not vim.tbl_contains({"@", "-"}, vim.v.event.cmdtype) then
+                vim.cmd "redraw"
+            end
+        end
+    end,
+})
+
 
