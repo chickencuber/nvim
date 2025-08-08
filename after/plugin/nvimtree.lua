@@ -27,6 +27,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
     callback = function(args)
         local buf_type = vim.bo[args.buf].buftype
         local buf_name = vim.api.nvim_buf_get_name(args.buf)
+        if(buf_type == "terminal") then
+            vim.cmd('NvimTreeClose')
+            return
+        end
 
         -- Ensure we are not in a terminal buffer or a modified buffer
         if buf_type == '' and buf_name ~= 'NvimTree' then
