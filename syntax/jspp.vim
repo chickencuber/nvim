@@ -1,3 +1,4 @@
+
 if !exists("main_syntax")
   if version < 600
     syntax clear
@@ -16,6 +17,7 @@ endif
 
 syntax sync fromstart
 syntax case match
+setlocal commentstring=//\ %s
 
 " Basic tokens
 syntax keyword jsDebugger debugger
