@@ -107,12 +107,6 @@ return require('packer').startup(function(use)
     use "lukas-reineke/indent-blankline.nvim"
     use "echasnovski/mini.indentscope"
     use {
-        "Djancyp/better-comments.nvim",
-        config = function()
-            require('better-comment').Setup()
-        end
-    }
-    use {
         "wstucco/c3.nvim",
         config = function()
             require("c3")
@@ -181,4 +175,10 @@ return require('packer').startup(function(use)
         end,
     }
     use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+    use {
+        "Djancyp/better-comments.nvim",
+        config = function()
+            require('better-comment').Setup()
+        end
+    }
 end)
