@@ -26,7 +26,6 @@ return require('packer').startup(function(use)
         cmp = true,
         neogit = true,
         gitsigns = true,
-        bufferline = true,
     })
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/nvim-treesitter-context')
@@ -55,7 +54,6 @@ return require('packer').startup(function(use)
         { 'L3MON4D3/LuaSnip' },
         { 'rafamadriz/friendly-snippets' },
     }
-    use { 'akinsho/nvim-bufferline.lua' }
     use {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
