@@ -26,6 +26,7 @@ return require('packer').startup(function(use)
         cmp = true,
         neogit = true,
         gitsigns = true,
+        ufo=true,
     })
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/nvim-treesitter-context')
@@ -179,4 +180,5 @@ return require('packer').startup(function(use)
             require'picvim'.setup()
         end,
     }
+    use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 end)
