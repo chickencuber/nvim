@@ -24,21 +24,7 @@ require("bufferline").setup {
             },
         },
     },
-    highlights = require("catppuccin.groups.integrations.bufferline").get_theme {
-        styles = { "italic", "bold" },
-        custom = {
-            all = {
-                fill = { bg = mocha.crust },
-                background = { fg = mocha.overlay1 },
-            },
-            mocha = {
-                buffer_selected = { fg = mocha.text, bg = mocha.surface0, bold = true, italic = false },
-                separator_selected = { fg = mocha.surface0, bg = mocha.surface0 },
-                separator = { fg = mocha.crust, bg = mocha.crust },
-                separator_visible = { fg = mocha.crust, bg = mocha.crust },
-            },
-        },
-    },
+    highlights = require("catppuccin.groups.integrations.bufferline").get_theme()
 }
 
 
