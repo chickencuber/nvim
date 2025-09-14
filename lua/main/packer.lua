@@ -42,8 +42,8 @@ return require('packer').startup(function(use)
 
     use { 'VonHeikemen/lsp-zero.nvim',
         { 'neovim/nvim-lspconfig' },
-        { 'williamboman/mason.nvim' },
-        { 'williamboman/mason-lspconfig.nvim' },
+        { 'mason-org/mason.nvim' },
+        { 'mason-org/mason-lspconfig.nvim' },
 
         { 'hrsh7th/nvim-cmp' },
         { 'hrsh7th/cmp-buffer' },

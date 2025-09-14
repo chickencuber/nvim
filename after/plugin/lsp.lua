@@ -64,81 +64,43 @@ if not configs.serve_d then
 end
 lspconfig.serve_d.setup {}
 
+require("lspconfig").kotlin_language_server.setup({
+    capabilities = lsp_capabilities,
+    init_options = {
+        storagePath = "/home/chickencuber/.cache/nvim/kotlin"
+    },
+})
 
-
+require('lspconfig').ts_ls.setup({
+    capabilities = lsp_capabilities,
+    root_dir = function()
+        -- Use the current working directory as the root directory
+        return vim.fn.getcwd()
+    end,
+})
+require('lspconfig').omnisharp.setup({
+    capabilities = lsp_capabilities,
+    root_dir = function()
+        -- Use the current working directory as the root directory
+        return vim.fn.getcwd()
+    end,
+})
+require 'lspconfig'.clangd.setup {}
+require('lspconfig').rust_analyzer.setup({
+    capabilities = lsp_capabilities,
+    settings = {
+        ["rust-analyzer"] = {
+            cargo = {
+                allFeatures = true,
+            },
+            procMacro = {
+                enable = true,
+            },
+        },
+    },
+})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'rust_analyzer', 'eslint', 'lua_ls', 'omnisharp', 'ts_ls', 'clangd', 'kotlin_language_server' },
-    handlers = {
-        function(server_name)
-            require('lspconfig')[server_name].setup({
-                capabilities = lsp_capabilities,
-            })
-        end,
-        kotlin_language_server = function()
-            require("lspconfig").kotlin_language_server.setup({
-                capabilities = lsp_capabilities,
-                init_options = {
-                    storagePath = "/home/chickencuber/.cache/nvim/kotlin"
-                },
-            })
-        end,
-        ts_ls = function()
-            require('lspconfig').ts_ls.setup({
-                capabilities = lsp_capabilities,
-                root_dir = function()
-                    -- Use the current working directory as the root directory
-                    return vim.fn.getcwd()
-                end,
-            })
-        end,
-        clangd = function()
-            require 'lspconfig'.clangd.setup {}
-        end,
-        omnisharp = function()
-            require('lspconfig').omnisharp.setup({
-                capabilities = lsp_capabilities,
-                root_dir = function()
-                    -- Use the current working directory as the root directory
-                    return vim.fn.getcwd()
-                end,
-            })
-        end,
-        lua_ls = function()
-            require('lspconfig').lua_ls.setup({
-                capabilities = lsp_capabilities,
-                settings = {
-                    Lua = {
-                        runtime = {
-                            version = 'LuaJIT'
-                        },
-                        diagnostics = {
-                            globals = {'vim'},
-                        },
-                        workspace = {
-                            library = {
-                                vim.env.VIMRUNTIME,
-                            },
-                        },
-                    }
-                }
-            })
-        end,
-        rust_analyzer = function()
-            require('lspconfig').rust_analyzer.setup({
-                capabilities = lsp_capabilities,
-                settings = {
-                    ["rust-analyzer"] = {
-                        cargo = {
-                            allFeatures = true,
-                        },
-                        procMacro = {
-                            enable = true,
-                        },
-                    },
-                },
-            })
-        end,
-    }
+    ensure_installed = { 'rust_analyzer', 'eslint', 'lua_ls', 'omnisharp', 'ts_ls', 'clangd', 'kotlin_language_server'},
 })
 
 
