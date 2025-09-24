@@ -37,7 +37,6 @@ return require('packer').startup(function(use)
         requires = { { "nvim-lua/plenary.nvim" } }
     })
     use('mbbill/undotree')
-    -- use('tpope/vim-fugitive')
     use { 'TimUntersberger/neogit', requires = { 'nvim-lua/plenary.nvim', "sindrets/diffview.nvim" } }
 
     use { 'VonHeikemen/lsp-zero.nvim',
@@ -55,7 +54,7 @@ return require('packer').startup(function(use)
         { 'L3MON4D3/LuaSnip' },
         { 'rafamadriz/friendly-snippets' },
     }
-    use {
+    use { 
         "windwp/nvim-autopairs",
         event = "InsertEnter",
         config = function()
