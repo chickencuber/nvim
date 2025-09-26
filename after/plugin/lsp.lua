@@ -1,25 +1,34 @@
-local lsp = require('lsp-zero')
+-- =======================
+-- Capabilities for nvim-cmp
+-- =======================
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
+capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
+-- =======================
+-- Keymaps on LspAttach
+-- =======================
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('user_lsp_attach', { clear = true }),
     callback = function(event)
         local opts = { buffer = event.buf }
 
-        vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
-        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
-        vim.keymap.set('n', '<leader>vws', function() vim.lsp.buf.workspace_symbol() end, opts)
-        vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end, opts)
-        vim.keymap.set('n', '[d', function() vim.lsp.diagnostic.goto_next() end, opts)
-        vim.keymap.set('n', ']d', function() vim.lsp.diagnostic.goto_prev() end, opts)
-        vim.keymap.set('n', '<leader>vca', function() vim.lsp.buf.code_action() end, opts)
-        vim.keymap.set('n', '<leader>vrr', function() vim.lsp.buf.references() end, opts)
-        vim.keymap.set('n', '<leader>vrn', function() vim.lsp.buf.rename() end, opts)
-        vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', '<leader>vws', vim.lsp.buf.workspace_symbol, opts)
+        vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float, opts)
+        vim.keymap.set('n', '[d', vim.diagnostic.goto_next, opts)
+        vim.keymap.set('n', ']d', vim.diagnostic.goto_prev, opts)
+        vim.keymap.set('n', '<leader>vca', vim.lsp.buf.code_action, opts)
+        vim.keymap.set('n', '<leader>vrr', vim.lsp.buf.references, opts)
+        vim.keymap.set('n', '<leader>vrn', vim.lsp.buf.rename, opts)
+        vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, opts)
     end,
 })
 
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-
+-- =======================
+-- Mason setup
+-- =======================
 require('mason').setup({
     ui = {
         icons = {
@@ -30,135 +39,112 @@ require('mason').setup({
     }
 })
 
-local lspconfig = require('lspconfig')
-local util = require('lspconfig/util')
-local configs = require('lspconfig.configs')
+require('mason-lspconfig').setup({
+    ensure_installed = { 'rust_analyzer', 'eslint', 'lua_ls', 'omnisharp', 'ts_ls', 'clangd', 'kotlin_language_server' },
+})
 
+-- =======================
+-- Custom servers
+-- =======================
+local configs = require('lspconfig.configs')
+local util = require('lspconfig.util')
+
+
+-- c3_lsp
 if not configs.c3_lsp then
     configs.c3_lsp = {
         default_config = {
             cmd = { "c3lsp" },
             filetypes = { "c3", "c3i" },
-            root_dir = function(fname)
-                return util.find_git_ancestor(fname)
-            end,
+            root_dir = function(fname) return util.find_git_ancestor(fname) end,
             settings = {},
-            name = "c3_lsp"
+            name = "c3_lsp",
         }
     }
 end
-lspconfig.c3_lsp.setup {}
+vim.lsp.config("c3_lsp", { capabilities = capabilities })
+vim.lsp.enable("c3_lsp")
 
+-- serve_d
 if not configs.serve_d then
     configs.serve_d = {
         default_config = {
             cmd = { "serve-d" },
             filetypes = { "d" },
-            root_dir = function(fname)
-                return util.find_git_ancestor(fname)
-            end,
+            root_dir = function(fname) return util.find_git_ancestor(fname) end,
             settings = {},
-            name = "serve_d"
+            name = "serve_d",
         }
     }
 end
-lspconfig.serve_d.setup {}
+vim.lsp.config("serve_d", { capabilities = capabilities })
+vim.lsp.enable("serve_d")
 
-require("lspconfig").kotlin_language_server.setup({
-    capabilities = lsp_capabilities,
-    init_options = {
-        storagePath = "/home/chickencuber/.cache/nvim/kotlin"
-    },
+-- =======================
+-- Standard servers
+-- =======================
+-- Kotlin
+vim.lsp.config("kotlin_language_server", {
+    capabilities = capabilities,
+    init_options = { storagePath = "/home/chickencuber/.cache/nvim/kotlin" },
 })
+vim.lsp.enable("kotlin_language_server")
 
-require('lspconfig').ts_ls.setup({
-    capabilities = lsp_capabilities,
-    root_dir = function()
-        -- Use the current working directory as the root directory
-        return vim.fn.getcwd()
-    end,
+-- TypeScript / JavaScript
+vim.lsp.config("ts_ls", {
+    capabilities = capabilities,
+    root_dir = function() return vim.fn.getcwd() end,
 })
-require('lspconfig').omnisharp.setup({
-    capabilities = lsp_capabilities,
-    root_dir = function()
-        -- Use the current working directory as the root directory
-        return vim.fn.getcwd()
-    end,
+vim.lsp.enable("ts_ls")
+
+-- C#
+vim.lsp.config("omnisharp", {
+    capabilities = capabilities,
+    root_dir = function() return vim.fn.getcwd() end,
 })
-require 'lspconfig'.clangd.setup {}
-require('lspconfig').rust_analyzer.setup({
-    capabilities = lsp_capabilities,
+vim.lsp.enable("omnisharp")
+
+-- C / C++
+vim.lsp.config("clangd", { capabilities = capabilities })
+vim.lsp.enable("clangd")
+
+-- Rust
+vim.lsp.config("rust_analyzer", {
+    capabilities = capabilities,
     settings = {
         ["rust-analyzer"] = {
-            cargo = {
-                allFeatures = true,
-            },
-            procMacro = {
-                enable = true,
-            },
+            cargo = { allFeatures = true },
+            procMacro = { enable = true },
         },
     },
 })
-require('mason-lspconfig').setup({
-    ensure_installed = { 'rust_analyzer', 'eslint', 'lua_ls', 'omnisharp', 'ts_ls', 'clangd', 'kotlin_language_server'},
-})
+vim.lsp.enable("rust_analyzer")
 
-
-vim.lsp.config('lua_ls', {
+-- Lua
+vim.lsp.config("lua_ls", {
     on_init = function(client)
-      if client.workspace_folders then
-        local path = client.workspace_folders[1].name
-        if
-          path ~= vim.fn.stdpath('config')
-          and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
-        then
-          return
+        local path = client.workspace_folders and client.workspace_folders[1].name
+        if path and path ~= vim.fn.stdpath("config") then
+            if vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc") then
+                return
+            end
         end
-      end
 
-      client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-        runtime = {
-          -- Tell the language server which version of Lua you're using (most
-          -- likely LuaJIT in the case of Neovim)
-          version = 'LuaJIT',
-          -- Tell the language server how to find Lua modules same way as Neovim
-          -- (see `:h lua-module-load`)
-          path = {
-            'lua/?.lua',
-            'lua/?/init.lua',
-          },
-        },
-        -- Make the server aware of Neovim runtime files
-        workspace = {
-          checkThirdParty = false,
-          library = {
-            vim.env.VIMRUNTIME,
-            -- Depending on the usage, you might want to add additional paths
-            -- here.
-            '${3rd}/luv/library',
-            '${3rd}/busted/library',
-          }
-          -- Or pull in all of 'runtimepath'.
-          -- NOTE: this is a lot slower and will cause issues when working on
-          -- your own configuration.
-          -- See https://github.com/neovim/nvim-lspconfig/issues/3189
-          -- library = {
-          --   vim.api.nvim_get_runtime_file('', true),
-          -- }
-        }
-      })
+        client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+            runtime = { version = "LuaJIT", path = { "lua/?.lua", "lua/?/init.lua" } },
+            workspace = { checkThirdParty = false, library = { vim.env.VIMRUNTIME } },
+        })
     end,
-    settings = {
-      Lua = {}
-    }
-  })
+    settings = { Lua = {} },
+})
+vim.lsp.enable("lua_ls")
 
-
+-- =======================
+-- Completion (cmp) setup
+-- =======================
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
--- this is the function that loads the extra snippets to luasnip
--- from rafamadriz/friendly-snippets
 require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
@@ -175,10 +161,7 @@ cmp.setup({
         ['<C-Space>'] = cmp.mapping.complete(),
     }),
     snippet = {
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-        end,
+        expand = function(args) require('luasnip').lsp_expand(args.body) end,
     },
 })
 
-lsp.setup()

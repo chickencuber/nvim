@@ -183,6 +183,16 @@ _G.packer_plugins = {
     path = "/home/chickencuber/.local/share/nvim/site/pack/packer/start/neogit",
     url = "https://github.com/TimUntersberger/neogit"
   },
+  ["noice.nvim"] = {
+    loaded = true,
+    path = "/home/chickencuber/.local/share/nvim/site/pack/packer/start/noice.nvim",
+    url = "https://github.com/folke/noice.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/chickencuber/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
+  },
   ["nvim-autopairs"] = {
     config = { "\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0" },
     loaded = false,
@@ -197,7 +207,7 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-colorizer.lua"] = {
-    config = { "\27LJ\2\nð\2\0\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0005\5\b\0=\5\t\4=\4\n\3=\3\v\0024\3\0\0=\3\f\2B\0\2\1K\0\1\0\rbuftypes\25user_default_options\tsass\fparsers\1\2\0\0\bcss\1\0\2\fparsers\0\venable\1\1\0\14\rAARRGGBB\1\16virtualtext\bâ– \nnames\2\tmode\16virtualtext\vcss_fn\1\18always_update\1\vhsl_fn\1\vrgb_fn\1\bRGB\2\rRRGGBBAA\1\rtailwind\1\tsass\0\vRRGGBB\2\bcss\1\14filetypes\1\0\3\rbuftypes\0\25user_default_options\0\14filetypes\0\1\2\0\0\6*\nsetup\14colorizer\frequire\0" },
+    config = { "\27LJ\2\nð\2\0\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0005\5\b\0=\5\t\4=\4\n\3=\3\v\0024\3\0\0=\3\f\2B\0\2\1K\0\1\0\rbuftypes\25user_default_options\tsass\fparsers\1\2\0\0\bcss\1\0\2\fparsers\0\venable\1\1\0\14\vrgb_fn\1\bRGB\2\rRRGGBBAA\1\rtailwind\1\vRRGGBB\2\16virtualtext\bâ– \nnames\2\tsass\0\bcss\1\tmode\16virtualtext\rAARRGGBB\1\vcss_fn\1\18always_update\1\vhsl_fn\1\14filetypes\1\0\3\rbuftypes\0\25user_default_options\0\14filetypes\0\1\2\0\0\6*\nsetup\14colorizer\frequire\0" },
     loaded = true,
     path = "/home/chickencuber/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
     url = "https://github.com/NvChad/nvim-colorizer.lua"
@@ -255,7 +265,7 @@ _G.packer_plugins = {
     url = "https://github.com/chipsenkbeil/org-roam.nvim"
   },
   orgmode = {
-    config = { "\27LJ\2\n“\2\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\3=\3\a\2B\0\2\1K\0\1\0\rmappings\borg\1\0\1\borg\0\1\0\3\21org_global_cycle\1\14org_cycle\1\24org_toggle_checkbox\15<leader>tt\1\0\4\27org_default_notes_file\26~/orgfiles/refile.org\rmappings\0\23org_startup_folded\finherit\21org_agenda_files\20~/orgfiles/**/*\nsetup\forgmode\frequire\0" },
+    config = { "\27LJ\2\n“\2\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\3=\3\a\2B\0\2\1K\0\1\0\rmappings\borg\1\0\1\borg\0\1\0\3\24org_toggle_checkbox\15<leader>tt\21org_global_cycle\1\14org_cycle\1\1\0\4\23org_startup_folded\finherit\21org_agenda_files\20~/orgfiles/**/*\27org_default_notes_file\26~/orgfiles/refile.org\rmappings\0\nsetup\forgmode\frequire\0" },
     loaded = true,
     path = "/home/chickencuber/.local/share/nvim/site/pack/packer/start/orgmode",
     url = "https://github.com/nvim-orgmode/orgmode"
@@ -311,6 +321,10 @@ time([[Defining packer_plugins]], false)
 time([[Config for c3.nvim]], true)
 try_loadstring("\27LJ\2\n\"\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\ac3\frequire\0", "config", "c3.nvim")
 time([[Config for c3.nvim]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+try_loadstring("\27LJ\2\nð\2\0\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0005\5\b\0=\5\t\4=\4\n\3=\3\v\0024\3\0\0=\3\f\2B\0\2\1K\0\1\0\rbuftypes\25user_default_options\tsass\fparsers\1\2\0\0\bcss\1\0\2\fparsers\0\venable\1\1\0\14\vrgb_fn\1\bRGB\2\rRRGGBBAA\1\rtailwind\1\vRRGGBB\2\16virtualtext\bâ– \nnames\2\tsass\0\bcss\1\tmode\16virtualtext\rAARRGGBB\1\vcss_fn\1\18always_update\1\vhsl_fn\1\14filetypes\1\0\3\rbuftypes\0\25user_default_options\0\14filetypes\0\1\2\0\0\6*\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
+time([[Config for nvim-colorizer.lua]], false)
 -- Config for: catppuccin
 time([[Config for catppuccin]], true)
 try_loadstring("\27LJ\2\nD\0\0\3\0\4\0\0066\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\1K\0\1\0\21catppuccin-mocha\16colorscheme\bcmd\bvim\0", "config", "catppuccin")
@@ -321,28 +335,24 @@ try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K
 time([[Config for PicVim]], false)
 -- Config for: orgmode
 time([[Config for orgmode]], true)
-try_loadstring("\27LJ\2\n“\2\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\3=\3\a\2B\0\2\1K\0\1\0\rmappings\borg\1\0\1\borg\0\1\0\3\21org_global_cycle\1\14org_cycle\1\24org_toggle_checkbox\15<leader>tt\1\0\4\27org_default_notes_file\26~/orgfiles/refile.org\rmappings\0\23org_startup_folded\finherit\21org_agenda_files\20~/orgfiles/**/*\nsetup\forgmode\frequire\0", "config", "orgmode")
+try_loadstring("\27LJ\2\n“\2\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\3=\3\a\2B\0\2\1K\0\1\0\rmappings\borg\1\0\1\borg\0\1\0\3\24org_toggle_checkbox\15<leader>tt\21org_global_cycle\1\14org_cycle\1\1\0\4\23org_startup_folded\finherit\21org_agenda_files\20~/orgfiles/**/*\27org_default_notes_file\26~/orgfiles/refile.org\rmappings\0\nsetup\forgmode\frequire\0", "config", "orgmode")
 time([[Config for orgmode]], false)
--- Config for: org-bullets.nvim
-time([[Config for org-bullets.nvim]], true)
-try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16org-bullets\frequire\0", "config", "org-bullets.nvim")
-time([[Config for org-bullets.nvim]], false)
 -- Config for: better-comments.nvim
 time([[Config for better-comments.nvim]], true)
 try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nSetup\19better-comment\frequire\0", "config", "better-comments.nvim")
 time([[Config for better-comments.nvim]], false)
--- Config for: toggle-checkbox.nvim
-time([[Config for toggle-checkbox.nvim]], true)
-try_loadstring("\27LJ\2\nK\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\tchar\6X\nsetup\20toggle-checkbox\frequire\0", "config", "toggle-checkbox.nvim")
-time([[Config for toggle-checkbox.nvim]], false)
--- Config for: nvim-colorizer.lua
-time([[Config for nvim-colorizer.lua]], true)
-try_loadstring("\27LJ\2\nð\2\0\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0005\4\a\0005\5\b\0=\5\t\4=\4\n\3=\3\v\0024\3\0\0=\3\f\2B\0\2\1K\0\1\0\rbuftypes\25user_default_options\tsass\fparsers\1\2\0\0\bcss\1\0\2\fparsers\0\venable\1\1\0\14\rAARRGGBB\1\16virtualtext\bâ– \nnames\2\tmode\16virtualtext\vcss_fn\1\18always_update\1\vhsl_fn\1\vrgb_fn\1\bRGB\2\rRRGGBBAA\1\rtailwind\1\tsass\0\vRRGGBB\2\bcss\1\14filetypes\1\0\3\rbuftypes\0\25user_default_options\0\14filetypes\0\1\2\0\0\6*\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
-time([[Config for nvim-colorizer.lua]], false)
+-- Config for: org-bullets.nvim
+time([[Config for org-bullets.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16org-bullets\frequire\0", "config", "org-bullets.nvim")
+time([[Config for org-bullets.nvim]], false)
 -- Config for: org-roam.nvim
 time([[Config for org-roam.nvim]], true)
 try_loadstring("\27LJ\2\nR\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\14directory\15~/orgfiles\nsetup\rorg-roam\frequire\0", "config", "org-roam.nvim")
 time([[Config for org-roam.nvim]], false)
+-- Config for: toggle-checkbox.nvim
+time([[Config for toggle-checkbox.nvim]], true)
+try_loadstring("\27LJ\2\nK\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\tchar\6X\nsetup\20toggle-checkbox\frequire\0", "config", "toggle-checkbox.nvim")
+time([[Config for toggle-checkbox.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]

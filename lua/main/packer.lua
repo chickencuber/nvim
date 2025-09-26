@@ -27,6 +27,7 @@ return require('packer').startup(function(use)
         neogit = true,
         gitsigns = true,
         ufo=true,
+        noice = true,
     })
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/nvim-treesitter-context')
@@ -179,5 +180,11 @@ return require('packer').startup(function(use)
         config = function()
             require('better-comment').Setup()
         end
+    }
+    use {
+        "folke/noice.nvim",
+        requires = {
+            "MunifTanjim/nui.nvim",
+        }
     }
 end)
