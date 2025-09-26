@@ -8,27 +8,29 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.8',
-        -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
-    use { "catppuccin/nvim", as = "catppuccin", config = function()
-        vim.cmd.colorscheme "catppuccin-mocha"
-    end
+    use {
+        "catppuccin/nvim",
+        as = "catppuccin",
+        config = function()
+            vim.cmd.colorscheme "catppuccin-mocha"
+            require("catppuccin").setup({
+                mason = true,
+                nvimtree = true,
+                telescope = true,
+                treesitter = true,
+                lsp_trouble = true,
+                lsp_saga = true,
+                harpoon = true,
+                cmp = true,
+                neogit = true,
+                gitsigns = true,
+                ufo=true,
+                noice = true,
+            })
+        end
     }
-    require("catppuccin").setup({
-        mason = true,
-        nvimtree = true,
-        telescope = true,
-        treesitter = true,
-        lsp_trouble = true,
-        lsp_saga = true,
-        harpoon = true,
-        cmp = true,
-        neogit = true,
-        gitsigns = true,
-        ufo=true,
-        noice = true,
-    })
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/nvim-treesitter-context')
     use('nvim-treesitter/nvim-treesitter-refactor')
@@ -41,65 +43,65 @@ return require('packer').startup(function(use)
     use { 'TimUntersberger/neogit', requires = { 'nvim-lua/plenary.nvim', "sindrets/diffview.nvim" } }
 
     use { 'VonHeikemen/lsp-zero.nvim',
-        { 'neovim/nvim-lspconfig' },
-        { 'mason-org/mason.nvim' },
-        { 'mason-org/mason-lspconfig.nvim' },
+    { 'neovim/nvim-lspconfig' },
+    { 'mason-org/mason.nvim' },
+    { 'mason-org/mason-lspconfig.nvim' },
 
-        { 'hrsh7th/nvim-cmp' },
-        { 'hrsh7th/cmp-buffer' },
-        { 'hrsh7th/cmp-path' },
-        { 'saadparwaiz1/cmp_luasnip' },
-        { 'hrsh7th/cmp-nvim-lsp' },
-        { 'hrsh7th/cmp-nvim-lua' },
+    { 'hrsh7th/nvim-cmp' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-path' },
+    { 'saadparwaiz1/cmp_luasnip' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-nvim-lua' },
 
-        { 'L3MON4D3/LuaSnip' },
-        { 'rafamadriz/friendly-snippets' },
-    }
-    use { 
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        config = function()
-            require("nvim-autopairs").setup {}
-        end
-    }
-    use {
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons', -- optional
-        },
-    }
-    use 'ron-rs/ron.vim'
-    use {
-        'NvChad/nvim-colorizer.lua',
-        config = function()
-            require("colorizer").setup {
-                filetypes = { "*" },
-                user_default_options = {
-                    RGB = true,           -- #RGB hex codes
-                    RRGGBB = true,        -- #RRGGBB hex codes
-                    names = true,         -- "Name" codes like Blue or blue
-                    RRGGBBAA = false,     -- #RRGGBBAA hex codes
-                    AARRGGBB = false,     -- 0xAARRGGBB hex codes
-                    rgb_fn = false,       -- CSS rgb() and rgba() functions
-                    hsl_fn = false,       -- CSS hsl() and hsla() functions
-                    css = false,          -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-                    css_fn = false,       -- Enable all CSS *functions*: rgb_fn, hsl_fn
-                    -- Available modes for `mode`: foreground, background,  virtualtext
-                    mode = "virtualtext", -- Set the display mode.
-                    -- Available methods are false / true / "normal" / "lsp" / "both"
-                    -- True is same as normal
-                    tailwind = false,                                -- Enable tailwind colors
-                    -- parsers can contain values used in |user_default_options|
-                    sass = { enable = false, parsers = { "css" }, }, -- Enable sass colors
-                    virtualtext = "■",
-                    -- update color values even if buffer is not focused
-                    -- example use: cmp_menu, cmp_docs
-                    always_update = false
-                },
-                -- all the sub-options of filetypes apply to buftypes
-                buftypes = {},
-            }
-        end }
+    { 'L3MON4D3/LuaSnip' },
+    { 'rafamadriz/friendly-snippets' },
+}
+use { 
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+        require("nvim-autopairs").setup {}
+    end
+}
+use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+        'nvim-tree/nvim-web-devicons', -- optional
+    },
+}
+use 'ron-rs/ron.vim'
+use {
+    'NvChad/nvim-colorizer.lua',
+    config = function()
+        require("colorizer").setup {
+            filetypes = { "*" },
+            user_default_options = {
+                RGB = true,           -- #RGB hex codes
+                RRGGBB = true,        -- #RRGGBB hex codes
+                names = true,         -- "Name" codes like Blue or blue
+                RRGGBBAA = false,     -- #RRGGBBAA hex codes
+                AARRGGBB = false,     -- 0xAARRGGBB hex codes
+                rgb_fn = false,       -- CSS rgb() and rgba() functions
+                hsl_fn = false,       -- CSS hsl() and hsla() functions
+                css = false,          -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+                css_fn = false,       -- Enable all CSS *functions*: rgb_fn, hsl_fn
+                -- Available modes for `mode`: foreground, background,  virtualtext
+                mode = "virtualtext", -- Set the display mode.
+                -- Available methods are false / true / "normal" / "lsp" / "both"
+                -- True is same as normal
+                tailwind = false,                                -- Enable tailwind colors
+                -- parsers can contain values used in |user_default_options|
+                sass = { enable = false, parsers = { "css" }, }, -- Enable sass colors
+                virtualtext = "■",
+                -- update color values even if buffer is not focused
+                -- example use: cmp_menu, cmp_docs
+                always_update = false
+            },
+            -- all the sub-options of filetypes apply to buftypes
+            buftypes = {},
+        }
+    end }
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true },
@@ -187,5 +189,4 @@ return require('packer').startup(function(use)
             "MunifTanjim/nui.nvim",
         }
     }
-    use 'zaldih/themery.nvim'
 end)

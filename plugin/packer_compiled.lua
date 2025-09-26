@@ -103,7 +103,7 @@ _G.packer_plugins = {
     url = "https://github.com/wstucco/c3.nvim"
   },
   catppuccin = {
-    config = { "\27LJ\2\nD\0\0\3\0\4\0\0066\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\1K\0\1\0\21catppuccin-mocha\16colorscheme\bcmd\bvim\0" },
+    config = { "\27LJ\2\nã\1\0\0\3\0\b\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\0016\0\4\0'\2\5\0B\0\2\0029\0\6\0005\2\a\0B\0\2\1K\0\1\0\1\0\f\16lsp_trouble\2\fharpoon\2\nmason\2\rgitsigns\2\14telescope\2\nnoice\2\15treesitter\2\bufo\2\rnvimtree\2\bcmp\2\vneogit\2\rlsp_saga\2\nsetup\15catppuccin\frequire\21catppuccin-mocha\16colorscheme\bcmd\bvim\0" },
     loaded = true,
     path = "/home/chickencuber/.local/share/nvim/site/pack/packer/start/catppuccin",
     url = "https://github.com/catppuccin/nvim"
@@ -327,7 +327,7 @@ try_loadstring("\27LJ\2\nð\2\0\0\6\0\r\0\0176\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\
 time([[Config for nvim-colorizer.lua]], false)
 -- Config for: catppuccin
 time([[Config for catppuccin]], true)
-try_loadstring("\27LJ\2\nD\0\0\3\0\4\0\0066\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\1K\0\1\0\21catppuccin-mocha\16colorscheme\bcmd\bvim\0", "config", "catppuccin")
+try_loadstring("\27LJ\2\nã\1\0\0\3\0\b\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0B\0\2\0016\0\4\0'\2\5\0B\0\2\0029\0\6\0005\2\a\0B\0\2\1K\0\1\0\1\0\f\16lsp_trouble\2\fharpoon\2\nmason\2\rgitsigns\2\14telescope\2\nnoice\2\15treesitter\2\bufo\2\rnvimtree\2\bcmp\2\vneogit\2\rlsp_saga\2\nsetup\15catppuccin\frequire\21catppuccin-mocha\16colorscheme\bcmd\bvim\0", "config", "catppuccin")
 time([[Config for catppuccin]], false)
 -- Config for: PicVim
 time([[Config for PicVim]], true)
