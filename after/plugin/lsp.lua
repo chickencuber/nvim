@@ -63,7 +63,6 @@ if not configs.c3_lsp then
     }
 end
 vim.lsp.config("c3_lsp", { capabilities = capabilities })
-vim.lsp.enable("c3_lsp")
 
 -- serve_d
 if not configs.serve_d then
@@ -78,7 +77,6 @@ if not configs.serve_d then
     }
 end
 vim.lsp.config("serve_d", { capabilities = capabilities })
-vim.lsp.enable("serve_d")
 
 -- =======================
 -- Standard servers
@@ -88,25 +86,21 @@ vim.lsp.config("kotlin_language_server", {
     capabilities = capabilities,
     init_options = { storagePath = "/home/chickencuber/.cache/nvim/kotlin" },
 })
-vim.lsp.enable("kotlin_language_server")
 
 -- TypeScript / JavaScript
 vim.lsp.config("ts_ls", {
     capabilities = capabilities,
     root_dir = function() return vim.fn.getcwd() end,
 })
-vim.lsp.enable("ts_ls")
 
 -- C#
 vim.lsp.config("omnisharp", {
     capabilities = capabilities,
     root_dir = function() return vim.fn.getcwd() end,
 })
-vim.lsp.enable("omnisharp")
 
 -- C / C++
 vim.lsp.config("clangd", { capabilities = capabilities })
-vim.lsp.enable("clangd")
 
 -- Rust
 vim.lsp.config("rust_analyzer", {
@@ -118,26 +112,56 @@ vim.lsp.config("rust_analyzer", {
         },
     },
 })
-vim.lsp.enable("rust_analyzer")
 
 -- Lua
-vim.lsp.config("lua_ls", {
+vim.lsp.config('lua_ls', {
     on_init = function(client)
-        local path = client.workspace_folders and client.workspace_folders[1].name
-        if path and path ~= vim.fn.stdpath("config") then
-            if vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc") then
-                return
+        if client.workspace_folders then
+            local path = client.workspace_folders[1].name
+            if
+                path ~= vim.fn.stdpath('config')
+                and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+                then
+                    return
+                end
             end
-        end
 
-        client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-            runtime = { version = "LuaJIT", path = { "lua/?.lua", "lua/?/init.lua" } },
-            workspace = { checkThirdParty = false, library = { vim.env.VIMRUNTIME } },
+            client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+                runtime = {
+                    -- Tell the language server which version of Lua you're using (most
+                    -- likely LuaJIT in the case of Neovim)
+                    version = 'LuaJIT',
+                    -- Tell the language server how to find Lua modules same way as Neovim
+                    -- (see `:h lua-module-load`)
+                    path = {
+                        'lua/?.lua',
+                        'lua/?/init.lua',
+                    },
+                },
+                -- Make the server aware of Neovim runtime files
+                workspace = {
+                    checkThirdParty = false,
+                    library = {
+                        vim.env.VIMRUNTIME,
+                        -- Depending on the usage, you might want to add additional paths
+                        -- here.
+                        '${3rd}/luv/library',
+                        '${3rd}/busted/library',
+                    }
+                    -- Or pull in all of 'runtimepath'.
+                    -- NOTE: this is a lot slower and will cause issues when working on
+                    -- your own configuration.
+                    -- See https://github.com/neovim/nvim-lspconfig/issues/3189
+                    -- library = {
+                        --   vim.api.nvim_get_runtime_file('', true),
+                        -- }
+                    }
+                })
+            end,
+            settings = {
+                Lua = {}
+            }
         })
-    end,
-    settings = { Lua = {} },
-})
-vim.lsp.enable("lua_ls")
 
 -- =======================
 -- Completion (cmp) setup
