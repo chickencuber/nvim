@@ -42,151 +42,149 @@ return require('packer').startup(function(use)
     use('mbbill/undotree')
     use { 'TimUntersberger/neogit', requires = { 'nvim-lua/plenary.nvim', "sindrets/diffview.nvim" } }
 
-    use { 'VonHeikemen/lsp-zero.nvim',
-    { 'neovim/nvim-lspconfig' },
-    { 'mason-org/mason.nvim' },
-    { 'mason-org/mason-lspconfig.nvim' },
+    use { 'neovim/nvim-lspconfig' }
+    use { 'mason-org/mason.nvim' }
+    use { 'mason-org/mason-lspconfig.nvim' }
 
-    { 'hrsh7th/nvim-cmp' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-path' },
-    { 'saadparwaiz1/cmp_luasnip' },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-nvim-lua' },
+    use { 'hrsh7th/nvim-cmp' }
+    use { 'hrsh7th/cmp-buffer' }
+    use { 'hrsh7th/cmp-path' }
+    use { 'saadparwaiz1/cmp_luasnip' }
+    use { 'hrsh7th/cmp-nvim-lsp' }
+    use { 'hrsh7th/cmp-nvim-lua' }
 
-    { 'L3MON4D3/LuaSnip' },
-    { 'rafamadriz/friendly-snippets' },
-}
-use { 
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    config = function()
-        require("nvim-autopairs").setup {}
-    end
-}
-use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-        'nvim-tree/nvim-web-devicons', -- optional
-    },
-}
-use 'ron-rs/ron.vim'
-use {
-    'NvChad/nvim-colorizer.lua',
-    config = function()
-        require("colorizer").setup {
-            filetypes = { "*" },
-            user_default_options = {
-                RGB = true,           -- #RGB hex codes
-                RRGGBB = true,        -- #RRGGBB hex codes
-                names = true,         -- "Name" codes like Blue or blue
-                RRGGBBAA = false,     -- #RRGGBBAA hex codes
-                AARRGGBB = false,     -- 0xAARRGGBB hex codes
-                rgb_fn = false,       -- CSS rgb() and rgba() functions
-                hsl_fn = false,       -- CSS hsl() and hsla() functions
-                css = false,          -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-                css_fn = false,       -- Enable all CSS *functions*: rgb_fn, hsl_fn
-                -- Available modes for `mode`: foreground, background,  virtualtext
-                mode = "virtualtext", -- Set the display mode.
-                -- Available methods are false / true / "normal" / "lsp" / "both"
-                -- True is same as normal
-                tailwind = false,                                -- Enable tailwind colors
-                -- parsers can contain values used in |user_default_options|
-                sass = { enable = false, parsers = { "css" }, }, -- Enable sass colors
-                virtualtext = "■",
-                -- update color values even if buffer is not focused
-                -- example use: cmp_menu, cmp_docs
-                always_update = false
-            },
-            -- all the sub-options of filetypes apply to buftypes
-            buftypes = {},
-        }
-    end }
+    use { 'L3MON4D3/LuaSnip' }
+    use { 'rafamadriz/friendly-snippets' }
     use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true },
-    }
-    use "lukas-reineke/indent-blankline.nvim"
-    use "echasnovski/mini.indentscope"
-    use {
-        "wstucco/c3.nvim",
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
         config = function()
-            require("c3")
-        end,
-    }
-    use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
-    use "windwp/nvim-ts-autotag"
-    use({
-        'MeanderingProgrammer/render-markdown.nvim',
-        after = { 'nvim-treesitter' },
-        config = function()
-            require('render-markdown').setup({})
-        end,
-    })
-    use {
-        'nvim-orgmode/orgmode',
-        config = function()
-            require('orgmode').setup({
-                org_agenda_files = '~/orgfiles/**/*',
-                org_default_notes_file = '~/orgfiles/refile.org',
-                org_startup_folded = "inherit",
-                mappings = {
-                    org = {
-                        org_cycle=false,
-                        org_global_cycle=false,
-                        org_toggle_checkbox="<leader>tt"
-                    },
-                },
-            })
+            require("nvim-autopairs").setup {}
         end
     }
-
     use {
-        "chickencuber/toggle-checkbox.nvim",
-        config = function()
-            require("toggle-checkbox").setup({
-                char = "X",
-            })
-        end,
-    }
-    use {
-        "chipsenkbeil/org-roam.nvim",
-        tag = "0.1.1",
+        'nvim-tree/nvim-tree.lua',
         requires = {
-            {
-                "nvim-orgmode/orgmode",
-                tag = "0.3.7",
-            },
+            'nvim-tree/nvim-web-devicons', -- optional
         },
-        config = function()
-            require("org-roam").setup({
-                directory = "~/orgfiles",
-            })
-        end
     }
+    use 'ron-rs/ron.vim'
     use {
-        'akinsho/org-bullets.nvim',
+        'NvChad/nvim-colorizer.lua',
         config = function()
-            require('org-bullets').setup()
-        end
-    }
-    use {
-        "chickencuber/PicVim",
-        config = function()
-            require'picvim'.setup()
-        end,
-    }
-    use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
-    use {
-        "Djancyp/better-comments.nvim",
-        config = function()
-            require('better-comment').Setup()
-        end
-    }
-    use {
-        "folke/noice.nvim",
-        requires = {
-            "MunifTanjim/nui.nvim",
+            require("colorizer").setup {
+                filetypes = { "*" },
+                user_default_options = {
+                    RGB = true,           -- #RGB hex codes
+                    RRGGBB = true,        -- #RRGGBB hex codes
+                    names = true,         -- "Name" codes like Blue or blue
+                    RRGGBBAA = false,     -- #RRGGBBAA hex codes
+                    AARRGGBB = false,     -- 0xAARRGGBB hex codes
+                    rgb_fn = false,       -- CSS rgb() and rgba() functions
+                    hsl_fn = false,       -- CSS hsl() and hsla() functions
+                    css = false,          -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+                    css_fn = false,       -- Enable all CSS *functions*: rgb_fn, hsl_fn
+                    -- Available modes for `mode`: foreground, background,  virtualtext
+                    mode = "virtualtext", -- Set the display mode.
+                    -- Available methods are false / true / "normal" / "lsp" / "both"
+                    -- True is same as normal
+                    tailwind = false,                                -- Enable tailwind colors
+                    -- parsers can contain values used in |user_default_options|
+                    sass = { enable = false, parsers = { "css" }, }, -- Enable sass colors
+                    virtualtext = "■",
+                    -- update color values even if buffer is not focused
+                    -- example use: cmp_menu, cmp_docs
+                    always_update = false
+                },
+                -- all the sub-options of filetypes apply to buftypes
+                buftypes = {},
+            }
+        end }
+        use {
+            'nvim-lualine/lualine.nvim',
+            requires = { 'nvim-tree/nvim-web-devicons', opt = true },
         }
-    }
-end)
+        use "lukas-reineke/indent-blankline.nvim"
+        use "echasnovski/mini.indentscope"
+        use {
+            "wstucco/c3.nvim",
+            config = function()
+                require("c3")
+            end,
+        }
+        use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
+        use "windwp/nvim-ts-autotag"
+        use({
+            'MeanderingProgrammer/render-markdown.nvim',
+            after = { 'nvim-treesitter' },
+            config = function()
+                require('render-markdown').setup({})
+            end,
+        })
+        use {
+            'nvim-orgmode/orgmode',
+            config = function()
+                require('orgmode').setup({
+                    org_agenda_files = '~/orgfiles/**/*',
+                    org_default_notes_file = '~/orgfiles/refile.org',
+                    org_startup_folded = "inherit",
+                    mappings = {
+                        org = {
+                            org_cycle=false,
+                            org_global_cycle=false,
+                            org_toggle_checkbox="<leader>tt"
+                        },
+                    },
+                })
+            end
+        }
+
+        use {
+            "chickencuber/toggle-checkbox.nvim",
+            config = function()
+                require("toggle-checkbox").setup({
+                    char = "X",
+                })
+            end,
+        }
+        use {
+            "chipsenkbeil/org-roam.nvim",
+            tag = "0.1.1",
+            requires = {
+                {
+                    "nvim-orgmode/orgmode",
+                    tag = "0.3.7",
+                },
+            },
+            config = function()
+                require("org-roam").setup({
+                    directory = "~/orgfiles",
+                })
+            end
+        }
+        use {
+            'akinsho/org-bullets.nvim',
+            config = function()
+                require('org-bullets').setup()
+            end
+        }
+        use {
+            "chickencuber/PicVim",
+            config = function()
+                require'picvim'.setup()
+            end,
+        }
+        use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+        use {
+            "Djancyp/better-comments.nvim",
+            config = function()
+                require('better-comment').Setup()
+            end
+        }
+        use {
+            "folke/noice.nvim",
+            requires = {
+                "MunifTanjim/nui.nvim",
+            }
+        }
+    end)
