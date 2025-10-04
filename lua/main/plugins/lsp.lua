@@ -45,22 +45,28 @@ return {
             filetypes = { "c3", "c3i" },
             root_markers={".git"}
         })
-        vim.lsp.enable("c3_lsp");
+        vim.lsp.enable("c3_lsp")
 
         vim.lsp.config("serve_d", {
             cmd = { "serve-d" },
             filetypes = { "d" },
             root_markers={".git"}
         })
+        vim.lsp.enable("serve_d")
 
 
         vim.lsp.config("kotlin_language_server", {})
+        vim.lsp.enable("kotlin_language_server")
 
         vim.lsp.config("ts_ls",{})
+        vim.lsp.enable("ts_ls")
         vim.lsp.config("omnisharp", {})
+        vim.lsp.enable("omnisharp")
         vim.lsp.config("clangd", {})
+        vim.lsp.enable("clangd")
 
         vim.lsp.config("rust_analyzer", {})
+        vim.lsp.enable("rust_analyzer")
         require('mason-lspconfig').setup({
             ensure_installed = { 'rust_analyzer', 'eslint', 'lua_ls', 'omnisharp', 'ts_ls', 'clangd', 'kotlin_language_server'},
         })
@@ -73,74 +79,75 @@ return {
                     if
                         path ~= vim.fn.stdpath('config')
                         and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
-                        then
-                            return
-                        end
+                    then
+                        return
                     end
+                end
 
-                    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-                        runtime = {
-                            -- Tell the language server which version of Lua you're using (most
-                            -- likely LuaJIT in the case of Neovim)
-                            version = 'LuaJIT',
-                            -- Tell the language server how to find Lua modules same way as Neovim
-                            -- (see `:h lua-module-load`)
-                            path = {
-                                'lua/?.lua',
-                                'lua/?/init.lua',
-                            },
+                client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+                    runtime = {
+                        -- Tell the language server which version of Lua you're using (most
+                        -- likely LuaJIT in the case of Neovim)
+                        version = 'LuaJIT',
+                        -- Tell the language server how to find Lua modules same way as Neovim
+                        -- (see `:h lua-module-load`)
+                        path = {
+                            'lua/?.lua',
+                            'lua/?/init.lua',
                         },
-                        -- Make the server aware of Neovim runtime files
-                        workspace = {
-                            checkThirdParty = false,
-                            library = {
-                                vim.env.VIMRUNTIME,
-                                -- Depending on the usage, you might want to add additional paths
-                                -- here.
-                                '${3rd}/luv/library',
-                                '${3rd}/busted/library',
-                            }
-                            -- Or pull in all of 'runtimepath'.
-                            -- NOTE: this is a lot slower and will cause issues when working on
-                            -- your own configuration.
-                            -- See https://github.com/neovim/nvim-lspconfig/issues/3189
-                            -- library = {
-                                --   vim.api.nvim_get_runtime_file('', true),
-                                -- }
-                            }
-                        })
-                    end,
-                    settings = {
-                        Lua = {}
+                    },
+                    -- Make the server aware of Neovim runtime files
+                    workspace = {
+                        checkThirdParty = false,
+                        library = {
+                            vim.env.VIMRUNTIME,
+                            -- Depending on the usage, you might want to add additional paths
+                            -- here.
+                            '${3rd}/luv/library',
+                            '${3rd}/busted/library',
+                        }
+                        -- Or pull in all of 'runtimepath'.
+                        -- NOTE: this is a lot slower and will cause issues when working on
+                        -- your own configuration.
+                        -- See https://github.com/neovim/nvim-lspconfig/issues/3189
+                        -- library = {
+                            --   vim.api.nvim_get_runtime_file('', true),
+                            -- }
                     }
                 })
+            end,
+            settings = {
+                Lua = {}
+            }
+        })
+        vim.lsp.enable("lua_ls")
 
 
-                local cmp = require('cmp')
-                local cmp_select = { behavior = cmp.SelectBehavior.Select }
+        local cmp = require('cmp')
+        local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
-                -- this is the function that loads the extra snippets to luasnip
-                -- from rafamadriz/friendly-snippets
-                require('luasnip.loaders.from_vscode').lazy_load()
+        -- this is the function that loads the extra snippets to luasnip
+        -- from rafamadriz/friendly-snippets
+        require('luasnip.loaders.from_vscode').lazy_load()
 
-                cmp.setup({
-                    sources = {
-                        { name = 'path' },
-                        { name = 'nvim_lsp' },
-                        { name = 'luasnip', keyword_length = 2 },
-                        { name = 'buffer',  keyword_length = 3 },
-                    },
-                    mapping = cmp.mapping.preset.insert({
-                        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-                        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-                        ['<C-Space>'] = cmp.mapping.complete(),
-                    }),
-                    snippet = {
-                        expand = function(args)
-                            require('luasnip').lsp_expand(args.body)
-                        end,
-                    },
-                })
-            end
-        }
+        cmp.setup({
+            sources = {
+                { name = 'path' },
+                { name = 'nvim_lsp' },
+                { name = 'luasnip', keyword_length = 2 },
+                { name = 'buffer',  keyword_length = 3 },
+            },
+            mapping = cmp.mapping.preset.insert({
+                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+                ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+                ['<C-Space>'] = cmp.mapping.complete(),
+            }),
+            snippet = {
+                expand = function(args)
+                    require('luasnip').lsp_expand(args.body)
+                end,
+            },
+        })
+    end
+}
