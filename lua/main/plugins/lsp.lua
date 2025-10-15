@@ -39,6 +39,14 @@ return {
                 }
             }
         })
+        vim.lsp.config("arduino_language_server", {
+            cmd = { "arduino-language-server",
+            "-cli-config", "~/.arduino15/arduino-cli.yaml",
+            "-fqbn", "arduino:avr:uno" },
+            filetypes = {"arduino"},
+            root_markers={".git"}
+        })
+        vim.lsp.enable("arduino_language_server")
 
         vim.lsp.config("c3_lsp", {
             cmd = { "c3lsp" },
