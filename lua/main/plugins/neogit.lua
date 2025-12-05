@@ -5,30 +5,34 @@ return {
         "sindrets/diffview.nvim",        -- optional - Diff integration
         "nvim-telescope/telescope.nvim", -- optional
     },
-    config=function()
+    config = function()
         local neogit = require('neogit')
-        vim.keymap.set("n", "<leader>gs", function ()
-            local buf_path = vim.api.nvim_buf_get_name(0)
+
+        vim.keymap.set("n", "<leader>gs", function()
+            local buf_type = vim.bo.buftype
             local dir
 
-            if buf_path == "" then
-                dir = vim.loop.cwd()
+            if buf_type == "terminal" then
+                -- Terminal buffer: use its cwd
+                local ok, term_cwd = pcall(vim.api.nvim_buf_get_var, 0, "terminal_cwd")
+                dir = (ok and term_cwd) or vim.uv.cwd()
             else
-                dir = vim.fn.fnamemodify(buf_path, ":h")
+                -- Normal buffer: use file's directory
+                local buf_path = vim.api.nvim_buf_get_name(0)
+                dir = (buf_path ~= "" and vim.fn.fnamemodify(buf_path, ":h")) or vim.uv.cwd()
             end
-            if dir == nil then
-                dir = ""
-            end
-            local git_root = vim.fn.systemlist("git -C " .. vim.fn.shellescape(dir) .. " rev-parse --show-toplevel")[1]
 
+            -- Ensure we have a valid string
+            dir = dir or ""
+
+            -- Get git root if inside a repo
+            local git_root = vim.fn.systemlist("git -C " .. vim.fn.shellescape(dir) .. " rev-parse --show-toplevel")[1]
             if not git_root or git_root == "" then
-                local set = vim.loop.cwd();
-                if set == nil then
-                    set = ""
-                end
-                git_root = set
+                git_root = dir
             end
-            neogit.open({kind="split_above", cwd=git_root})
+
+            neogit.open({ kind = "split_above", cwd = git_root })
         end)
     end
+
 }
