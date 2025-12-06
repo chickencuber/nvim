@@ -39,7 +39,7 @@
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },
   "render-markdown.nvim": { "branch": "main", "commit": "b2b135347e299ffbf7f4123fb7811899b0c9f4b8" },
   "ron.vim": { "branch": "master", "commit": "f749e543975a82e8dd9a6e7df9600a1c098ae800" },
-  "tasks.nvim": { "branch": "master", "commit": "116a5a09fd8a00cffb4710a80b9dedd8b22fd8a3" },
+  "tasks.nvim": { "branch": "master", "commit": "9759761a425aca8350220bbcb37bf75288ac3912" },
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
   "toggle-checkbox.nvim": { "branch": "main", "commit": "6968eb6c71ec18ae07260d79f280e880b753e841" },
