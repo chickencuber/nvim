@@ -29,6 +29,15 @@ vim.keymap.set("n", '<leader>tm', vim.cmd.term)
 vim.keymap.set("t", "<S-Tab>", "<C-\\><C-n>")
 vim.keymap.set("n", "<leader>cb", vim.cmd.bd)
 
+
+vim.keymap.set("n", "tf", vim.cmd.TaskFromTodo)
+vim.keymap.set("n", "gt", vim.cmd.TaskGoto)
+vim.keymap.set("n", "tm", vim.cmd.TaskMenu)
+vim.keymap.set("n", "tmm", function()
+    vim.cmd.TaskMenu("show_closed")
+end)
+vim.keymap.set("n", "ty", vim.cmd.TaskYank)
+
 vim.keymap.set("n", "<leader>tt", function()
     local ft = vim.bo.filetype
     if ft == "markdown" or ft == "norg" then
