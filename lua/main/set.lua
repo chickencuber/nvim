@@ -49,6 +49,12 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "CmdlineLeave", "WinEnt
     end,
 })
 
+vim.cmd[[
+aunmenu PopUp
+autocmd! nvim.popupmenu
+]]
+
+
 vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "CmdlineEnter", "WinLeave" }, {
     pattern = "*",
     group = augroup,
