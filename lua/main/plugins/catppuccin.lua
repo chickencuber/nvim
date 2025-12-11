@@ -1,5 +1,4 @@
 return { "catppuccin/nvim", name = "catppuccin", priority = 1000, config=function()
-    vim.cmd.colorscheme "catppuccin-mocha"
     require("catppuccin").setup({
         mason = true,
         nvimtree = true,
@@ -14,5 +13,6 @@ return { "catppuccin/nvim", name = "catppuccin", priority = 1000, config=functio
         ufo=true,
         noice = true,
     })
+    vim.cmd.colorscheme "catppuccin-mocha"
 end}
 
